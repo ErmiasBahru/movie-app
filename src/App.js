@@ -4,8 +4,8 @@ import MovieViewCard from "./components/MovieViewCard";
 import SearchIcon from "./search.svg";
 import "./App.css";
 
-const API_KEY = '592fdfcf'
-const API_URL = `http://www.omdbapi.com?apikey=${API_KEY}`;
+const DB_KEY = process.env.REACT_APP_DB_KEY
+const BD_URL = `http://www.omdbapi.com?apikey=${DB_KEY}`;
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,7 +16,7 @@ const App = () => {
   }, []);
 
   const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
+    const response = await fetch(`${BD_URL}&s=${title}`);
     const data = await response.json();
 
     setMovies(data.Search);
